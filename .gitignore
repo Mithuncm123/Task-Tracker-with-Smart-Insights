@@ -1,0 +1,46 @@
+# ---- Python ----
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+instance/
+.env
+venv/
+env/
+*.log
+
+# ---- Flask ----
+*.pid
+*.db-journal
+.migrations/
+
+# ---- VS Code ----
+.vscode/
+*.code-workspace
+
+# ---- OS-specific ----
+.DS_Store
+Thumbs.db
+
+# ---- Node / Frontend ----
+node_modules/
+dist/
+build/
+*.cache
+
+
+.env.local
+.env.development
+.env.production
+
+
+*.bak
+*.tmp
+*.swp
+
+
+coverage/
+.pytest_cache/
+htmlcov/
