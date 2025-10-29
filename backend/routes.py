@@ -84,7 +84,7 @@ def insights():
     if total == 0:
         message = "No tasks available."
     elif completed == total:
-        message = "🎉 All tasks are completed!"
+        message = " All tasks are completed!"
     elif pending == total:
         message = f"You have {pending} pending task{'s' if pending > 1 else ''}."
     else:
