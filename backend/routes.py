@@ -59,19 +59,28 @@ def update_task(id):
     db.session.commit()
     return jsonify({"message": "Task updated successfully"})
 
+# Delete task by ID
+@task_routes.route('/tasks/<int:id>', methods=['DELETE'])
+def delete_task(id):
+    task = Task.query.get(id)
+    if not task:
+        return jsonify({"error": "Task not found"}), 404
+
+    db.session.delete(task)
+    db.session.commit()
+    return jsonify({"message": "Task deleted successfully"}), 200
 
 
 # Insights route
 @task_routes.route('/insights', methods=['GET'])
 def insights():
     total = Task.query.count()
-    high = Task.query.filter_by(priority='High').count()
-    medium = Task.query.filter_by(priority='Medium').count()
-    low = Task.query.filter_by(priority='Low').count()
-    pending = Task.query.filter_by(status='Pending').count()
-    completed = Task.query.filter_by(status='Completed').count()
+    high = Task.query.filter_by(priority='high').count()
+    medium = Task.query.filter_by(priority='medium').count()
+    low = Task.query.filter_by(priority='low').count()
+    pending = Task.query.filter_by(status='pending').count()
+    completed = Task.query.filter_by(status='completed').count()
 
-    #  Message Logic
     if total == 0:
         message = "No tasks available."
     elif completed == total:
@@ -92,6 +101,7 @@ def insights():
         },
         "message": message
     })
+
 
 
 
